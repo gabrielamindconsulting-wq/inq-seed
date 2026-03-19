@@ -14,7 +14,7 @@ interface AlertItem {
 }
 
 export default function Index() {
-  const [phase, setPhase] = useState<Phase>('registration');
+  const [phase, setPhase] = useState<Phase>('landing');
   const [registration, setRegistration] = useState<RegistrationData | null>(null);
   const [selectedPeriodId, setSelectedPeriodId] = useState<string | null>(null);
   const [preSelectedPeriodId, setPreSelectedPeriodId] = useState<string | null>(null);
