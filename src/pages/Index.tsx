@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
+import LandingScreen from '@/components/quiz/LandingScreen';
 import RegistrationForm, { type RegistrationData } from '@/components/quiz/RegistrationForm';
 import AgePeriodSelector from '@/components/quiz/AgePeriodSelector';
 import QuizStep from '@/components/quiz/QuizStep';
 import ResultScreen from '@/components/quiz/ResultScreen';
 import { agePeriods, getAgePeriodFromBirthDate, type Question } from '@/data/quizQuestions';
 
-type Phase = 'registration' | 'agePeriod' | 'quiz' | 'result';
+type Phase = 'landing' | 'registration' | 'agePeriod' | 'quiz' | 'result';
 
 interface AlertItem {
   question: Question;
@@ -13,7 +14,7 @@ interface AlertItem {
 }
 
 export default function Index() {
-  const [phase, setPhase] = useState<Phase>('registration');
+  const [phase, setPhase] = useState<Phase>('landing');
   const [registration, setRegistration] = useState<RegistrationData | null>(null);
   const [selectedPeriodId, setSelectedPeriodId] = useState<string | null>(null);
   const [preSelectedPeriodId, setPreSelectedPeriodId] = useState<string | null>(null);
@@ -59,7 +60,7 @@ export default function Index() {
   }, [answers, currentQuestionIndex, selectedPeriod]);
 
   const handleRestart = useCallback(() => {
-    setPhase('registration');
+    setPhase('landing');
     setRegistration(null);
     setSelectedPeriodId(null);
     setPreSelectedPeriodId(null);
@@ -74,6 +75,10 @@ export default function Index() {
       .map((q, i) => ({ question: q, answer: answers[i] }))
       .filter(({ question, answer }) => answer === question.alertAnswer);
   };
+
+  if (phase === 'landing') {
+    return <LandingScreen onStart={() => setPhase('registration')} />;
+  }
 
   if (phase === 'registration') {
     return <RegistrationForm onSubmit={handleRegistration} />;
