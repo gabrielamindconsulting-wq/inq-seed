@@ -28,69 +28,69 @@ export default function ResultScreen({ alerts, onRestart }: Props) {
   const result = getResult();
 
   return (
-    <div className="min-h-screen bg-bubble-pattern p-4">
-      <div className="max-w-lg mx-auto pt-6 pb-8 flex flex-col items-center">
+    <div className="min-h-screen bg-bubble-pattern p-4 flex items-center justify-center">
+      <div className="max-w-lg w-full flex flex-col items-center">
         {/* Logo */}
-        <img src={logo} alt="Instituto Nadja Quadros" className="h-16 object-contain mb-10" />
+        <img src={logo} alt="Instituto Nadja Quadros" className="h-16 object-contain mb-8" />
 
-        {/* Result text */}
-        <div className="text-center mb-10 max-w-md">
-          {result === 'A' && (
-            <p className="text-xl leading-relaxed text-primary font-normal">
-              Parabéns! O seu filho atingiu todos os marcos esperados para a idade. Continue acompanhando o seu desenvolvimento e conte sempre com o Instituto Nadja Quadros.
-            </p>
-          )}
-          {result === 'B' && (
-            <p className="text-xl leading-relaxed text-foreground font-normal">
-              O seu filho não atingiu todos os marcos esperados para a idade. Tenha atenção — o Instituto Nadja Quadros irá entrar em contato com você para o agendamento de uma triagem gratuita, para melhor acompanhamento.
-            </p>
-          )}
-          {result === 'C' && (
-            <p className="text-xl leading-relaxed text-foreground font-normal">
-              O seu filho não atingiu todos os marcos esperados para a idade. O Instituto Nadja Quadros irá entrar em contato com você para o agendamento de uma triagem gratuita, para melhor acompanhamento.
-            </p>
+        {/* Card */}
+        <div className="bg-card rounded-2xl shadow-lg p-8 md:p-10 w-full">
+          <div className="text-center mb-8">
+            {result === 'A' && (
+              <p className="text-xl md:text-[22px] leading-relaxed text-primary font-bold tracking-tight">
+                Parabéns! O seu filho atingiu todos os marcos esperados para a idade.
+                <span className="block mt-3 font-semibold text-lg text-muted-foreground">
+                  Continue acompanhando o seu desenvolvimento e conte sempre com o Instituto Nadja Quadros.
+                </span>
+              </p>
+            )}
+            {result === 'B' && (
+              <p className="text-xl md:text-[22px] leading-relaxed text-foreground font-bold tracking-tight">
+                O seu filho não atingiu todos os marcos esperados para a idade.
+                <span className="block mt-3 font-semibold text-lg text-muted-foreground">
+                  Tenha atenção — o Instituto Nadja Quadros irá entrar em contato com você para o agendamento de uma triagem gratuita, para melhor acompanhamento.
+                </span>
+              </p>
+            )}
+            {result === 'C' && (
+              <p className="text-xl md:text-[22px] leading-relaxed text-foreground font-bold tracking-tight">
+                O seu filho não atingiu todos os marcos esperados para a idade.
+                <span className="block mt-3 font-semibold text-lg text-muted-foreground">
+                  O Instituto Nadja Quadros irá entrar em contato com você para o agendamento de uma triagem gratuita, para melhor acompanhamento.
+                </span>
+              </p>
+            )}
+          </div>
+
+          {/* CTA */}
+          {result === 'A' ? (
+            <a href="https://inqsaude.com.br" target="_blank" rel="noopener noreferrer" className="block">
+              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-14 text-base font-bold flex items-center justify-center gap-2">
+                Conhecer o Instituto <ExternalLink size={16} />
+              </Button>
+            </a>
+          ) : (
+            <div className="flex flex-col items-center">
+              <a href="https://wa.me/5561998022108" target="_blank" rel="noopener noreferrer" className="w-full">
+                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-14 text-base font-bold flex items-center justify-center gap-2">
+                  Falar no WhatsApp <ExternalLink size={16} />
+                </Button>
+              </a>
+              <p className="text-sm text-muted-foreground mt-3 text-center">
+                Ou entre em contato por e-mail: contato@inqsaude.com.br
+              </p>
+            </div>
           )}
         </div>
 
-        {/* CTA */}
-        {result === 'A' ? (
-          <a
-            href="https://inqsaude.com.br"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full max-w-xs"
-          >
-            <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-14 text-base font-bold flex items-center gap-2">
-              Conhecer o Instituto <ExternalLink size={16} />
-            </Button>
-          </a>
-        ) : (
-          <div className="flex flex-col items-center w-full max-w-xs">
-            <a
-              href="https://wa.me/5561998022108"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full"
-            >
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-full h-14 text-base font-bold flex items-center gap-2">
-                Falar no WhatsApp <ExternalLink size={16} />
-              </Button>
-            </a>
-            <p className="text-sm text-muted-foreground mt-3 text-center">
-              Ou entre em contato por e-mail: contato@inqsaude.com.br
-            </p>
-          </div>
-        )}
-
         <button
           onClick={onRestart}
-          className="mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors font-semibold"
+          className="mt-5 text-sm text-muted-foreground hover:text-foreground transition-colors font-semibold"
         >
           Fazer novo rastreio
         </button>
 
-        {/* Footer */}
-        <p className="mt-10 text-xs text-muted-foreground text-center">
+        <p className="mt-8 text-xs text-muted-foreground text-center">
           Este rastreio não constitui diagnóstico. É uma ferramenta de triagem preventiva.
         </p>
       </div>
