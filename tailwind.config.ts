@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Nunito', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        inq: {
+          dark: "hsl(var(--inq-green-dark))",
+          light: "hsl(var(--inq-green-light))",
+          bubble1: "hsl(var(--inq-bg-bubble-1))",
+          bubble2: "hsl(var(--inq-bg-bubble-2))",
+        },
+        area: {
+          socioemocional: "hsl(var(--area-socioemocional))",
+          sensoriomotor: "hsl(var(--area-sensoriomotor))",
+          "funcao-manual": "hsl(var(--area-funcao-manual))",
+          cognitivo: "hsl(var(--area-cognitivo))",
+          comunicacao: "hsl(var(--area-comunicacao))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,20 +81,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
