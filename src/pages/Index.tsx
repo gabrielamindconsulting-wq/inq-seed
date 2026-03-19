@@ -76,6 +76,10 @@ export default function Index() {
       .filter(({ question, answer }) => answer === question.alertAnswer);
   };
 
+  if (phase === 'landing') {
+    return <LandingScreen onStart={() => setPhase('registration')} />;
+  }
+
   if (phase === 'registration') {
     return <RegistrationForm onSubmit={handleRegistration} />;
   }
