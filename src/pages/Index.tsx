@@ -1,11 +1,12 @@
 import { useState, useCallback } from 'react';
+import LandingScreen from '@/components/quiz/LandingScreen';
 import RegistrationForm, { type RegistrationData } from '@/components/quiz/RegistrationForm';
 import AgePeriodSelector from '@/components/quiz/AgePeriodSelector';
 import QuizStep from '@/components/quiz/QuizStep';
 import ResultScreen from '@/components/quiz/ResultScreen';
 import { agePeriods, getAgePeriodFromBirthDate, type Question } from '@/data/quizQuestions';
 
-type Phase = 'registration' | 'agePeriod' | 'quiz' | 'result';
+type Phase = 'landing' | 'registration' | 'agePeriod' | 'quiz' | 'result';
 
 interface AlertItem {
   question: Question;
