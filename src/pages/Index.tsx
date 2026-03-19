@@ -60,7 +60,7 @@ export default function Index() {
   }, [answers, currentQuestionIndex, selectedPeriod]);
 
   const handleRestart = useCallback(() => {
-    setPhase('registration');
+    setPhase('landing');
     setRegistration(null);
     setSelectedPeriodId(null);
     setPreSelectedPeriodId(null);
