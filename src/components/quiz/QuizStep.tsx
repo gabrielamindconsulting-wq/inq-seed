@@ -140,11 +140,31 @@ export default function QuizStep({ question, currentStep, totalSteps, childName,
               {question.question}
             </h2>
 
-            {/* Support text */}
-            <div className="bg-accent/50 border border-border rounded-lg p-4 mb-6">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {question.supportText}
+            {/* Support text with examples */}
+            <div className="bg-accent/50 border border-border rounded-lg p-4 mb-6 space-y-2">
+              <p className="text-xs font-semibold text-muted-foreground">
+                Esperado: <span className="text-primary">{question.positiveAnswer}</span>
+                <span className="mx-2">|</span>
+                Alerta: <span className="text-foreground">{question.alertAnswer}</span>
               </p>
+              {question.supportText && (
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {question.supportText}
+                </p>
+              )}
+              {question.examples && question.examples.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-muted-foreground mb-1">Exemplos:</p>
+                  <ul className="space-y-1">
+                    {question.examples.map((ex, i) => (
+                      <li key={i} className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" />
+                        {ex}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* Buttons */}
