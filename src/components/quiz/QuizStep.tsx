@@ -142,11 +142,6 @@ export default function QuizStep({ question, currentStep, totalSteps, childName,
 
             {/* Support text with examples */}
             <div className="bg-accent/50 border border-border rounded-lg p-4 mb-6 space-y-2">
-              <p className="text-xs font-semibold text-muted-foreground">
-                Esperado: <span className="text-primary">{question.positiveAnswer}</span>
-                <span className="mx-2">|</span>
-                Alerta: <span className="text-foreground">{question.alertAnswer}</span>
-              </p>
               {question.supportText && (
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {question.supportText}
